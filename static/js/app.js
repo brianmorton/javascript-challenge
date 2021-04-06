@@ -36,10 +36,15 @@ function textpull() {
   var inputElement = d3.select("#datetime");
   var inputdate = inputElement.property("value");
   console.log(inputdate);
+  return inputdate;
 }
-return inputdate
+  
 //run filter statement
 
+//sample 
+  var filteredData = tableData.filter(date => date.datetime === inputdate);
+
+  console.log(filteredData);
 
 
 //rerun cell update function
