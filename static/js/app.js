@@ -2,7 +2,10 @@
 var tableData = data;
 
 var tbody = d3.select("tbody");
-var filtbutton = d3.select(".button");
+//select button and form
+// not targeting correctly?
+var filtbutton = d3.select("#filter-btn");
+var form = d3.select("#form");
 
 
 //d3 function append tr for object
@@ -19,16 +22,22 @@ var filtbutton = d3.select(".button");
 
 
 //button on click function
+filtbutton.on("click", textpull);
 
-
-//filtbutton.on("click", function() {
-//console.log('test button click')
-//}
-
+//test function
+function testfunc() {
+  d3.event.preventDefault();
+  console.log(this);
+}
 
 //pull from text field
-
-
+function textpull() {
+  d3.event.preventDefault();
+  var inputElement = d3.select("#datetime");
+  var inputdate = inputElement.property("value");
+  console.log(inputdate);
+}
+return inputdate
 //run filter statement
 
 
