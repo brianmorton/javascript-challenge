@@ -3,7 +3,6 @@ var tableData = data;
 
 var tbody = d3.select("tbody");
 //select button and form
-// not targeting correctly?
 var filtbutton = d3.select("#filter-btn");
 var form = d3.select("#form");
 
@@ -20,33 +19,40 @@ tableData.forEach(function(ufoReport) {
  });
 
 
- var inputdate = [`1/1/2010`]
 //button on click function
-filtbutton.on("click", textpull);
+filtbutton.on("click", testfunc);
 
-//test function
-function testfunc() {
-  d3.event.preventDefault();
-  console.log(this);
-}
 
 //pull from text field
 function textpull() {
   d3.event.preventDefault();
   var inputElement = d3.select("#datetime");
-  inputdate = inputElement.property("value");
+  var inputdate = inputElement.property("value");
   return inputdate;
+}
+
+//test function
+function testfunc() 
+{
+  d3.event.preventDefault();
+  var inputElement = d3.select("#datetime");
+  var inputdate = inputElement.property("value");
+  //run filter statement
+//issue here
+var filteredData = tableData.filter(function (date) {
+  return date.datetime === inputdate;
+});
+
 
 }
 console.log('inputdata', inputdate) 
-
+console.log(filteredData);
 //run filter statement
-//issue here
-  var filteredData = tableData.filter(function (date) {
-    return date.datetime === inputdate;
-  });
 
-  console.log(filteredData);
+ // var filteredData = tableData.filter(function (date) {
+//    return date.datetime === inputdate;
+//  });
+//  console.log(filteredData);
 
 
 //rerun cell update function
