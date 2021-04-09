@@ -1,6 +1,9 @@
 // from data.js
 var tableData = data;
+//empty array for filtering
+var filteredData = [];
 
+//select html 
 var tbody = d3.select("tbody");
 //select button and form
 var filtbutton = d3.select("#filter-btn");
@@ -22,8 +25,8 @@ tableData.forEach(function(ufoReport) {
 //button on click function
 filtbutton.on("click", textpull);
 
-textpull
-//pull from text field
+
+//test function
 function testfunc() {
   d3.event.preventDefault();
   var inputElement = d3.select("#datetime");
@@ -31,18 +34,26 @@ function testfunc() {
   return inputdate;
 }
 
-//test function
+//pull from text field
 function textpull() 
 {
   d3.event.preventDefault();
   var inputElement = d3.select("#datetime");
   var inputdate = inputElement.property("value");
   //run filter statement
-  var filteredData = tableData.filter(tableData => tableData.datetime === inputdate);
+  filteredData = tableData.filter(table => table.datetime === inputdate);
   return filteredData;
 }
 
-//error not defined? 
+//getting error: blank array? 
 console.log(filteredData);
 
-//rerun cell update function
+//rerun cell update function with refactored d3 function
+
+filteredData.forEach(function(ufoReport) {
+ var row = tbody.append("tr");
+ Object.entries(ufoReport).forEach(function([key, value]) {
+  var cell = row.append("td");
+  cell.text(value);
+ });
+});
