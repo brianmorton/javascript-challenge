@@ -20,11 +20,11 @@ tableData.forEach(function(ufoReport) {
 
 
 //button on click function
-filtbutton.on("click", testfunc);
+filtbutton.on("click", textpull);
 
-
+textpull
 //pull from text field
-function textpull() {
+function testfunc() {
   d3.event.preventDefault();
   var inputElement = d3.select("#datetime");
   var inputdate = inputElement.property("value");
@@ -32,27 +32,17 @@ function textpull() {
 }
 
 //test function
-function testfunc() 
+function textpull() 
 {
   d3.event.preventDefault();
   var inputElement = d3.select("#datetime");
   var inputdate = inputElement.property("value");
   //run filter statement
-//issue here
-var filteredData = tableData.filter(function (date) {
-  return date.datetime === inputdate;
-});
-
-
+  var filteredData = tableData.filter(tableData => tableData.datetime === inputdate);
+  return filteredData;
 }
-console.log('inputdata', inputdate) 
+
+//error not defined? 
 console.log(filteredData);
-//run filter statement
-
- // var filteredData = tableData.filter(function (date) {
-//    return date.datetime === inputdate;
-//  });
-//  console.log(filteredData);
-
 
 //rerun cell update function
